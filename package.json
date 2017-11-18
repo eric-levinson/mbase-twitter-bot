@@ -1,0 +1,27 @@
+{
+  "name": "tweetbot-play",
+  "version": "1.0.0",
+  "description": "A basic clout bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "now -e CONSUMER_KEY=@ds-twit-key -e CONSUMER_SECRET=@ds-twit-secret -e ACCESS_TOKEN=@ds-twit-access -e ACCESS_TOKEN_SECRET=@ds-twit-access-secret"
+  },
+  "now": {
+    "alias": "mbase-bot",
+    "files": [
+      "src",
+      "index.js"
+    ]
+  },
+  "keywords": [
+    "twitter bot"
+  ],
+  "author": "Eric Levinson <eric.levinson42@gmail.com> (@era_eric_og)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "twit": "^2.2.5",
+    "babel-polyfill": "^6.26.0"
+  }
+}
