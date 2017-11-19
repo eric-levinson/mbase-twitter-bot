@@ -31,7 +31,7 @@ bot.get('lists/members', {
                 //error response code
                 (err, response) => {
 	                if (err) {
-	                    console.log('error: unable to favorite: (probably already favorited..)'), //s.id, s.user.screen_name,
+	                    console.log('error: unable to favorite: (probably already favorited..)'),
 	                    console.log(tText),
 	                    console.log('author:', tName),
 	                    console.log('tweet id:', tId),
@@ -74,12 +74,6 @@ bot.get('lists/members', {
         	)
         }
         stream.on('tweet', t => {
-            /* 
-            console.log(`\n`)
-            console.log(`${t.text}\n`)
-            console.log(`${t.created_at}\n`)
-            console.log(`${t.user.screen_name}\n`)*/
-            //console.log(t.entities.urls)
 
             sCloud = t.entities.urls
 
@@ -125,7 +119,10 @@ bot.get('lists/members', {
                     favTweet(),
                     reTweet()
                 }
-                 else if (sString.indexOf('twitter') >= 0){
+                else if (sString.indexOf('twimg') >= 0){
+                    favTweet()
+                }
+                else if (sString.indexOf('twitter.com/twitter/') >= 0){
                     favTweet()
                 }
             }
@@ -133,10 +130,4 @@ bot.get('lists/members', {
     }
 })
 
-
-//stream test..
-/*const stream = bot.stream('statuses/filter', { follow: 'list:mbase_eric/rt-list' });
-
-stream.on('tweet', t => {
-  console.log(`${t.text}\n`)
-})*/
+bot.get
