@@ -1,9 +1,8 @@
 require('babel-polyfill')
 const config = require('./config')
 const Twit = require('twit')
-
-
 const bot = new Twit(config)
+tool = require('./sub/tweetinteract.js')
 
 //gets member list into array then forces to string
 //i don't want to talk about streaming.
@@ -23,56 +22,6 @@ bot.get('lists/members', {
         stream = bot.stream('statuses/filter', {
             follow: `${uList}`
         })
-        function favTweet() {
-            return bot.post(
-                'favorites/create', {
-                    id: tId
-                },
-                //error response code
-                (err, response) => {
-	                if (err) {
-	                    console.log('error: unable to favorite: (probably already favorited..)'),
-	                    console.log(tText),
-	                    console.log('author:', tName),
-	                    console.log('tweet id:', tId),
-	                    console.log('\n')
-	                }
-	                //success code
-	                else {
-	                    console.log('successfully favorited tweet:')
-	                    console.log(tText),
-	                    console.log('author:', tName),
-	                    console.log('tweet id:', tId),
-	                    console.log('\n')
-	                }
-	            }
-        	)
-        }
-        function reTweet() {
-            return bot.post(
-                'statuses/retweet/:id', {
-                    id: tId
-                },
-                //error response code
-                (err, response) => {
-	                if (err) {
-	                    console.log('error: unable to retweet: (probably already retweeted..)') //s.id, s.user.screen_name,
-	                    console.log(tText),
-	                    console.log('author:', tName),
-	                    console.log('tweet id:', tId),
-	                    console.log('\n')
-	                }
-	                //success code
-	                else {
-	                    console.log('successfully retweeted tweet:')
-	                    console.log(tText),
-	                    console.log('author:', tName),
-	                    console.log('tweet id:', tId),
-	                    console.log('\n')
-	                }
-	            }
-        	)
-        }
         stream.on('tweet', t => {
 
             sCloud = t.entities.urls
@@ -92,38 +41,38 @@ bot.get('lists/members', {
 
 
                 if (sString.indexOf('soundcloud') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('youtu.be') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('youtube') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('lilpeep') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('nojumper') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('itunes') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('spotify') >= 0){
-                    favTweet(),
-                    reTweet()
+                    tool.favTweet(),
+                    tool.reTweet()
                 }
                 else if (sString.indexOf('twimg') >= 0){
-                    favTweet()
+                    tool.favTweet()
                 }
                 else if (sString.indexOf('twitter.com/twitter/') >= 0){
-                    favTweet()
+                    tool.favTweet()
                 }
             }
         })
