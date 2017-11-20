@@ -38,7 +38,7 @@ module.exports = {
 	        //error response code
 	        (err, response) => {
 	            if (err) {
-	                console.log('error: unable to retweet: (probably already retweeted..)') //s.id, s.user.screen_name,
+	                console.log('error: unable to retweet: (probably already retweeted..)')
 	                console.log(tText),
 	                console.log('author:', tName),
 	                console.log('tweet id:', tId),

@@ -39,44 +39,21 @@ bot.get('lists/members', {
                 tText = t.text
                 tName = t.user.screen_name
 
+                rtArray = ['soundcloud','youtu.be','youtube','lilpeep','nojumper','itunes','spotify']
+                favArray = ['twimg','twitter.com/twitter/']
 
-                if (sString.indexOf('soundcloud') >= 0){
+                if (rtArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
                     tool.favTweet(),
                     tool.reTweet()
                 }
-                else if (sString.indexOf('youtu.be') >= 0){
-                    tool.favTweet(),
-                    tool.reTweet()
-                }
+                else if (favArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
+                    tool.favTweet()
+                }/*
                 else if (sString.indexOf('youtube') >= 0){
                     tool.favTweet(),
                     tool.reTweet()
-                }
-                else if (sString.indexOf('lilpeep') >= 0){
-                    tool.favTweet(),
-                    tool.reTweet()
-                }
-                else if (sString.indexOf('nojumper') >= 0){
-                    tool.favTweet(),
-                    tool.reTweet()
-                }
-                else if (sString.indexOf('itunes') >= 0){
-                    tool.favTweet(),
-                    tool.reTweet()
-                }
-                else if (sString.indexOf('spotify') >= 0){
-                    tool.favTweet(),
-                    tool.reTweet()
-                }
-                else if (sString.indexOf('twimg') >= 0){
-                    tool.favTweet()
-                }
-                else if (sString.indexOf('twitter.com/twitter/') >= 0){
-                    tool.favTweet()
-                }
+                }*/
             }
         })
     }
 })
-
-bot.get
