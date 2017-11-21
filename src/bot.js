@@ -46,14 +46,17 @@ bot.get('lists/members', {
                 idSimple = t.user.id_str
 
                 //url query parameters
-                rtArray = ['soundcloud','youtu.be','youtube','lilpeep','nojumper','itunes','spotify','instagram']
-                favArray = ['twimg','twitter.com/twitter/','twitter']
+                rtArray = ['soundcloud','youtu.be','youtube','lilpeep','nojumper','itunes','spotify','instagram','facebook']
+                favArray = ['twimg','twitter.com/twitter/','twitter','t.co']
                 //rt's for only list members
                 if (idString.indexOf(idSimple) >= 0 && rtArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
                     tool.favTweet(),
                     tool.reTweet()
                 }
-                //favs for all
+                else if (idString.indexOf(idSimple) >= 0 && favArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
+                    tool.favTweet(),
+                    tool.reTweet()
+                }
                 else if (rtArray.some(function(v) { return sString.indexOf(v) >= 0 }) || favArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
                     tool.favTweet()
                 }
