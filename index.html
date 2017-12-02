@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>wordly hello</title>
+	</head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+
+		var socket = io('/namespace1');
+
+		socket.on('hi', function(data) {
+			sData = data.source.name;
+
+			document.body.innerHTML += sData;
+			//document.write(sData);
+		});
+	</script>
+	<body>hello world</body>
+</html>
