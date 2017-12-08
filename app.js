@@ -21,7 +21,6 @@ nsp1.on('connection', function(socket) {
 	});
 
 	stream.on('follow', function(follow) {
-		console.log(follow);
 		nsp1.emit('hi', follow);
 	});	
 

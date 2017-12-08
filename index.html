@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<title>wordly hello</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
 	</head>
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
@@ -9,11 +15,55 @@
 		var socket = io('/namespace1');
 
 		socket.on('hi', function(data) {
-			sData = data.source.name;
 
-			document.body.innerHTML += sData;
+			//sData = data.source.name;
+			//document.body.innerHTML += sData;
 			//document.write(sData);
+			hImg = data.source.profile_banner_url;
+			pImg = data.source.profile_image_url_https;
+
+			cHeadImgSrc = document.getElementById("card-header-img-src");
+			cUsrName = document.getElementById("card-usr-name");
+			cUsrDesc = document.getElementById("card-usr-desc");
+			uUsrName = document.getElementById("user-usr-name");
+			uFollowing = document.getElementById("user-following");
+			uFollowers = document.getElementById("user-followers");
+
+			document.getElementById("card-profile-pic").src=pImg;
+			document.getElementById("card-header-img-src").src=hImg;
+			cUsrName.innerHTML = 'New Follower: ' + data.source.name;
+			cUsrDesc.innerHTML = data.source.description;
+			uUsrName.innerHTML = 'Username: ' + data.source.screen_name;
+			uFollowing.innerHTML = 'Following: ' + data.source.friends_count;
+			uFollowers.innerHTML = 'Followers: ' + data.source.followers_count;
+
 		});
 	</script>
-	<body>hello world</body>
+	<body>
+		<div class="container p-3">
+		  <div class="card" style="width: 20rem;">
+		    <div id="card-usr-name" class="card-header">
+    			New Follower
+  			</div>
+		  <img id="card-header-img-src" class="card-img-top" src="" alt="Card image cap">
+		  <div class="card-body">
+		  	<div class="media">
+		  		<img id="card-profile-pic" class="mr-3" src="" alt="Generic placeholder image">
+		  		<div id="card-usr-desc" class="media-body">
+		    	<h5 class="mt-0"></h5></div>
+		  	</div>
+		    <!-- <h2 id="card-usr-name" class="card-title"></h2>
+		    <p class="card-text"></p> -->
+
+		  
+
+		  </div>
+		  <ul class="list-group list-group-flush">
+		    <li id="user-usr-name" class="list-group-item">Username: </li>
+		    <li id="user-following" class="list-group-item">Following: </li>
+		    <li id="user-followers" class="list-group-item">Followers: </li>
+		  </ul>
+		</div>
+		</div>
+	</body>
 </html>
