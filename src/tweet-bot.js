@@ -59,9 +59,9 @@ bot.get('lists/members', {
                     tool.reTweet()
                 }
                 //member list parameter fav for all else that falls into array
-                else if (rtArray.some(function(v) { return sString.indexOf(v) >= 0 }) || favArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
+                /*else if (rtArray.some(function(v) { return sString.indexOf(v) >= 0 }) || favArray.some(function(v) { return sString.indexOf(v) >= 0 })) {
                     tool.favTweet()
-                }
+                }*/
             }
         })
     }

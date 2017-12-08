@@ -20,8 +20,10 @@
   "author": "Eric Levinson <eric.levinson42@gmail.com> (@era_eric_og)",
   "license": "ISC",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "dotenv": "^4.0.0",
-    "twit": "^2.2.5",
-    "babel-polyfill": "^6.26.0"
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4",
+    "twit": "^2.2.5"
   }
 }
