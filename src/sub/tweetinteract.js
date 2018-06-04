@@ -93,5 +93,29 @@ module.exports = {
 		        }
 	        )
 		}
-	}
+	},
+    unFollow: function (data) {
+        const config = require('../config')
+	    const Twit = require('twit')
+	    const bot = new Twit(config)
+        
+        return bot.post(
+            'friendships/destroy', {
+                user_id: data
+            },
+            (err, response) => {
+                if(err) {
+                    console.log('error: unable to unfollow user'),
+                    console.log(err),
+                    console.log('id: ', data),
+                    console.log('\n')
+                }
+                else {
+                    console.log('successfully unfollowed user'),
+                    console.log('id: ', data),
+                    console.log('\n')
+                }
+            }
+        )
+    }
 }
